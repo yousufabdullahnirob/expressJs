@@ -1,7 +1,9 @@
 const express = require("express");
-
+const cookieParser = require("cookie-parser");
+const secure = require("./secure");
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 const adminRouter = express.Router();
 
@@ -34,6 +36,16 @@ app.get("/uses/", (req, res) => {
 app.get("/users", (req, res) => {
     console.log(req.protocol);
     res.send("Hello nirob !");
+});
+
+app.post("/users", (req, res) => {
+    console.log(req.protocol);
+    res.send("Hello yousufs !");
+});
+
+app.get("/users/:id", (req, res) => {
+    console.log(req.cookies);
+    res.send("Hello yousufs !");
 });
 
 
